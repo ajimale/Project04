@@ -21,6 +21,7 @@
             (string-split line ","))))))
 )
 
+;; This seems a bit overcomplicated, but good work.
 (define (read-all-csv-files filenames)
   ;; TODO: Implement reading multiple CSV files
   ;; The user will write the file name only 
@@ -35,7 +36,7 @@
     ;; Append file data to the data list
     (append all-data file-data))))
 ) 
-
+;; Interesting implementation!
 ;; 2. Data Processing
 (define (clean-data data)
 ;; This funcation clean data by filtering and converting each row to 'sensor if it has valid enteris
@@ -58,7 +59,7 @@
 (define (round-to-two-decimals num)
     (string->number (real->decimal-string num 2)))
 
-
+;; These values should be found in the data instead of assigned manually
 (define (normalize-data data)
   ;; TODO: Implement data normalization
   (define min-temperature 0)
@@ -87,6 +88,8 @@
       (- max-noise-level min-noise-level))))) ;; Normalize noise level
   data)
 )
+
+;; This function looks great, separation of data, using let to hold a value for mean for the standard deviation.
 
 ;; 3. Statistical Analysis
 (define (calculate-statistics data)
@@ -161,6 +164,7 @@
   (displayln "\nTemperature Moving Average Trend: ")
   (for-each displayln (take temperature-trend 5)))
 
+;; It looks like you got really far into this, good job!
 ;; 4. Anomaly Detection
 (define (detect-anomalies data)
   ;; TODO: Use the provided anomaly detection algorithm
