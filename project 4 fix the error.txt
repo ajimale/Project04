@@ -1,0 +1,32 @@
+Fix the problem in the code: 
+1- Rather than hard code the file path, I will pass the file path as argument. As John said every system is different when write the path of file.  
+2- Have a function to extract all value of a parameter from the dataset. 
+3- Replace the hard code function that find the min and max, with one use dynamic min and max values.
+
+1- Function to Extract Parameter Data: 
+(define (extract-parameter data accessor)
+(map accessor data)) ; Access specific field (temperature, humid, etc.)
+
+2- Function Calculate Min/Max:
+
+(Definition (Calculate Minimum)
+(Apply Minimum))
+(Definition (Calculate Maximum)
+(Apply Maximum))
+
+3- Update Normalization logic: 
+
+(define (normalize-value value min-value max-value)
+	(/ (- value  min-value) – ( - max-value min-value)))
+
+4- calculate Min/Max for Each Parameter: 
+
+(define min-temperature ( calculate-min (extract-parameter data sensor-data-temperature)))
+(define max-temperature ( calculate-max (extract-parameter data sensor-data-temperature)))
+
+5-Integrate Dynamic Min/Max in Normalization:
+
+(define (normalize-data data)
+	(map (lambda (sd)
+		(sensor-data-timestamp sd)
+		(normalize-value (sensor-data-temperature sd) min-temperature max-temperature)
